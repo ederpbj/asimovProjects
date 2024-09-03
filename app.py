@@ -12,3 +12,12 @@ df = pd.DataFrame({
 })
 
 fig = px.bar(df, x="Fruit", y="Amount", color="City")
+
+# ================> Layout
+app.layout = html.Div(
+  children=[
+    html.H1("Hello", id="H1")
+
+    html.Div("Dash: Um framework web para python")
+  ]
+)
