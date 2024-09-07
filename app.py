@@ -1,9 +1,12 @@
 import dash
-from dash import html
+from dash import html, dcc
 import plotly.express as px
 import pandas as pd
 
+#extenal_stylesheet = 'https://codepen.io/chriddyp/pen/bWLwgP.css'
+
 app = dash.Dash(__name__)
+#app = dash.Dash(__name__, extenal_stylesheet=extenal_stylesheet)
 
 df = pd.DataFrame({
   "Fruit": ["Apples", "Oranges", "Bananas","Apples", "Oranges", "Bananas"],
@@ -14,10 +17,16 @@ df = pd.DataFrame({
 fig = px.bar(df, x="Fruit", y="Amount", color="City")
 
 # ================> Layout
-app.layout = html.Div(
+app.layout = html.Div(id="div1",
   children=[
-    html.H1("Hello", id="H1")
+    html.H1("Hello", id="h1"),
 
-    html.Div("Dash: Um framework web para python")
+    html.Div("Dash: Um framework web para python"),
+
+    dcc.Graph(figure=fig, id="graph")
   ]
 )
+
+# sempre no fim do projeto colocar:
+if __name__ == '__main__':
+  app.run_server(debug=True, port=8080)
