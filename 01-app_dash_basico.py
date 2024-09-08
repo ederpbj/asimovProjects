@@ -3,10 +3,10 @@ from dash import html, dcc
 import plotly.express as px
 import pandas as pd
 
-#extenal_stylesheet = 'https://codepen.io/chriddyp/pen/bWLwgP.css'
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__)
-#app = dash.Dash(__name__, extenal_stylesheet=extenal_stylesheet)
+#app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 df = pd.DataFrame({
   "Fruit": ["Apples", "Oranges", "Bananas","Apples", "Oranges", "Bananas"],
