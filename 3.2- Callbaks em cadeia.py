@@ -24,21 +24,21 @@ app.layout = html.Div([
     html.Div(id='display-selected-values')
 ])
 
-
+# Retorna as cidade por país
 @app.callback(
-    Output('cities-radio', 'options'),
+    Output('cities-radio', 'options'), # vira input no callback de cidades
     [Input('countries-radio', 'value')])
 def set_cities_options(selected_country):
     return [{'label': i, 'value': i} for i in all_options[selected_country]]
 
-
+# Retorna as cidades
 @app.callback(
     Output('cities-radio', 'value'),
     [Input('cities-radio', 'options')])
 def set_cities_value(available_options):
     return available_options[0]['value']
 
-
+# Retorna a opcão/detalhes da cidade
 @app.callback(
     Output('display-selected-values', 'children'),
     [Input('countries-radio', 'value'),
